@@ -11,7 +11,7 @@ const testUser: User = {
 };
 
 const disableUser: User = {
-  id: 1,
+  id: 2,
   name: "Test Disable Name",
   mail: "test_disable@example.com",
   enable: false,
@@ -19,7 +19,7 @@ const disableUser: User = {
 };
 
 const adminUser: User = {
-  id: 1,
+  id: 3,
   name: "Test Admin Name",
   mail: "test_admin@example.com",
   enable: true,
