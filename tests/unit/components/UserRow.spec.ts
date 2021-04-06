@@ -12,16 +12,16 @@ const testUser: User = {
 
 const disableUser: User = {
   id: 1,
-  name: "Test Name",
-  mail: "test@example.com",
+  name: "Test Disable Name",
+  mail: "test_disable@example.com",
   enable: false,
   isAdmin: false,
 };
 
 const adminUser: User = {
   id: 1,
-  name: "Test Name",
-  mail: "test@example.com",
+  name: "Test Admin Name",
+  mail: "test_admin@example.com",
   enable: true,
   isAdmin: true,
 };
