@@ -13,12 +13,6 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { User } from "@/@types";
-
-type Props = {
-  user: User;
-  onDeleteBtnClick: (index: number) => void;
-};
 
 export default defineComponent({
   name: "UserRow",
