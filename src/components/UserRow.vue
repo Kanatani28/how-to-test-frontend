@@ -32,10 +32,6 @@ export default defineComponent({
       required: true,
     },
   },
-  serup(props: Props) {
-    props.user;
-    props.onDeleteBtnClick;
-  },
 });
 </script>
 
