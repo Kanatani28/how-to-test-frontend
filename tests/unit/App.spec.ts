@@ -1,18 +1,29 @@
 import { mount } from "@vue/test-utils";
 import App from "@/App.vue";
+import { User } from "@/@types";
+const testData: User[] = [
+  {
+    id: 1,
+    name: "test",
+    mail: "test@example.com",
+    isAdmin: false,
+    enable: true,
+  },
+];
 
 describe("App.vue", () => {
-  it("初期描画ではcountが0であること", () => {
-    const wrapper = mount(App);
-
-    expect(wrapper.vm.count).toBe(0);
+  const wrapper = mount(App, {
+    shallow: true,
+    data() {
+      return {
+        users: testData,
+      };
+    },
   });
 
-  it("クリック時にcountがインクリメントされること", () => {
-    const wrapper = mount(App);
-
-    const button = wrapper.find("button");
-    button.trigger("click");
-    expect(wrapper.vm.count).toBe(1);
+  it("deleteUserを実行するとenableがfalseになること", () => {
+    expect(wrapper.vm.users[0].enable).toBe(true);
+    wrapper.vm.deleteUser(1);
+    expect(wrapper.vm.users[0].enable).toBe(false);
   });
 });
