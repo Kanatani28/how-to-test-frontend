@@ -7,9 +7,17 @@ describe("App.vue", () => {
     expect(wrapper.vm.count).toBe(0);
   });
 
-  it("クリック時にcountがインクリメントされること", () => {
+  it("increment実行時にcountが+1されること", () => {
+    wrapper.vm.increment();
+    expect(wrapper.vm.count).toBe(1);
+  });
+
+  it("クリック時にincrementがコールされること", () => {
+    const spy = jest.spyOn(wrapper.vm, "increment");
+
     const button = wrapper.find("button");
     button.trigger("click");
-    expect(wrapper.vm.count).toBe(1);
+
+    expect(spy).toHaveBeenCalled();
   });
 });
