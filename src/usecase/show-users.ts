@@ -1,6 +1,6 @@
 import { User } from "@/@types";
 
-export default function getUsers(): User[] {
+export function getUsers(): User[] {
   return [
     {
       id: 1,

@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { User } from "@/@types";
-import getUsers from "@/usecase/show-users";
+import { getUsers } from "@/usecase/show-users";
 import UserRow from "@/components/UserRow.vue";
 
 export default defineComponent({
