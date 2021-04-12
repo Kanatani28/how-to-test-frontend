@@ -18,14 +18,6 @@ const disableUser: User = {
   isAdmin: false,
 };
 
-const adminUser: User = {
-  id: 3,
-  name: "Test Admin Name",
-  mail: "test_admin@example.com",
-  enable: true,
-  isAdmin: true,
-};
-
 describe("UserRowに有効なユーザーが渡されたとき", () => {
   const wrapper = mount(UserRow, {
     props: {
@@ -63,25 +55,5 @@ describe("UserRowに無効なユーザーが渡されたとき", () => {
   });
   it("disabledスタイルが適用されていること", () => {
     expect(wrapper.classes()).toContain("disabled");
-  });
-});
-
-describe("UserRowに管理者ユーザーが渡されたとき", () => {
-  const wrapper = mount(UserRow, {
-    props: {
-      user: adminUser,
-      onDeleteBtnClick: jest.fn(),
-    },
-  });
-  it("ボタンが非活性であること", () => {
-    const deleteBtn = wrapper.find("button");
-    expect(deleteBtn.attributes()).toHaveProperty("disabled");
-  });
-
-  it("ボタンをクリックしてもonDeleteBtnClickがコールされること", () => {
-    const deleteBtn = wrapper.find("button");
-
-    deleteBtn.trigger("click");
-    expect(wrapper.vm.onDeleteBtnClick).not.toHaveBeenCalled();
   });
 });

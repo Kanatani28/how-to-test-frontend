@@ -4,18 +4,24 @@
     <td>{{ user.name }}</td>
     <td>{{ user.mail }}</td>
     <td>
-      <button :disabled="user.isAdmin" @click="onDeleteBtnClick(user.id)">
-        Delete
-      </button>
+      <DeleteButton
+        :isAdmin="user.isAdmin"
+        :onClick="onDeleteBtnClick"
+        :targetId="user.id"
+      />
     </td>
   </tr>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import DeleteButton from "./DeleteButton.vue";
 
 export default defineComponent({
   name: "UserRow",
+  components: {
+    DeleteButton,
+  },
   props: {
     user: {
       type: Object,
