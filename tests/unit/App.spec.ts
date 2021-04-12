@@ -32,9 +32,9 @@ describe("App.vue", () => {
   });
 
   it("deleteUserを実行すると削除フラグが立つこと", () => {
-    expect(wrapper.vm.users[0].isDeleted).toBe(true);
-    wrapper.vm.deleteUser(1);
     expect(wrapper.vm.users[0].isDeleted).toBe(false);
+    wrapper.vm.deleteUser(1);
+    expect(wrapper.vm.users[0].isDeleted).toBe(true);
   });
 
   it("usersの数だけUserRowがあること", () => {

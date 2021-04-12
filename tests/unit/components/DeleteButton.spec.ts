@@ -35,5 +35,6 @@ describe("DeleteButton: 一般ユーザーでのテスト", () => {
   it("disabled属性がない場合はクリック時にonClickが発火されること", () => {
     wrapper.trigger("click");
     expect(userData.onClick).toHaveBeenCalled();
+    expect(userData.onClick.mock.calls[0][0]).toBe(userData.targetId);
   });
 });
