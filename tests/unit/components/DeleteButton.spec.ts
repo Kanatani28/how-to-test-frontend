@@ -1,39 +1,39 @@
 import { mount } from "@vue/test-utils";
 import DeleteButton from "@/components/DeleteButton.vue";
 
-const disableData = {
+const adminData = {
   isAdmin: true,
   onClick: jest.fn(),
   targetId: 1,
 };
-const enableData = {
+const userData = {
   isAdmin: false,
   onClick: jest.fn(),
   targetId: 1,
 };
 
-describe("DeleteButton: disableDataでのテスト", () => {
+describe("DeleteButton: 管理者でのテスト", () => {
   const wrapper = mount(DeleteButton, {
-    props: { ...disableData },
+    props: { ...adminData },
   });
-  it("propsでdisabled: trueを受け取った場合、disabled属性が付与される", () => {
+  it("propsでisAdmin: trueを受け取った場合、disabled属性が付与される", () => {
     expect(wrapper.attributes()).toHaveProperty("disabled");
   });
   it("disabled属性がある場合はクリック時にonClickが発火されないこと", () => {
     wrapper.trigger("click");
-    expect(disableData.onClick).not.toHaveBeenCalled();
+    expect(adminData.onClick).not.toHaveBeenCalled();
   });
 });
 
-describe("DeleteButton: enableDataでのテスト", () => {
+describe("DeleteButton: 一般ユーザーでのテスト", () => {
   const wrapper = mount(DeleteButton, {
-    props: { ...enableData },
+    props: { ...userData },
   });
-  it("propsでdisabled: falseを受け取った場合、disabled属性が付与される", () => {
+  it("propsでisAdmin: falseを受け取った場合、disabled属性が付与されないこと", () => {
     expect(wrapper.attributes()).not.toHaveProperty("disabled");
   });
   it("disabled属性がない場合はクリック時にonClickが発火されること", () => {
     wrapper.trigger("click");
-    expect(enableData.onClick).toHaveBeenCalled();
+    expect(userData.onClick).toHaveBeenCalled();
   });
 });

@@ -1,5 +1,5 @@
 <template>
-  <tr :class="user.enable ? '' : 'disabled'">
+  <tr :class="user.isDeleted ? 'disabled' : ''">
     <td>{{ user.id }}</td>
     <td>{{ user.name }}</td>
     <td>{{ user.mail }}</td>

@@ -10,14 +10,14 @@ const testData: User[] = [
     name: "test",
     mail: "test@example.com",
     isAdmin: false,
-    enable: true,
+    isDeleted: true,
   },
   {
     id: 2,
     name: "test2",
     mail: "test2@example.com",
     isAdmin: false,
-    enable: true,
+    isDeleted: true,
   },
 ];
 
@@ -31,10 +31,10 @@ describe("App.vue", () => {
     },
   });
 
-  it("deleteUserを実行するとenableがfalseになること", () => {
-    expect(wrapper.vm.users[0].enable).toBe(true);
+  it("deleteUserを実行すると削除フラグが立つこと", () => {
+    expect(wrapper.vm.users[0].isDeleted).toBe(true);
     wrapper.vm.deleteUser(1);
-    expect(wrapper.vm.users[0].enable).toBe(false);
+    expect(wrapper.vm.users[0].isDeleted).toBe(false);
   });
 
   it("usersの数だけUserRowがあること", () => {

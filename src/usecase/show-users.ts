@@ -7,21 +7,21 @@ export function getUsers(): User[] {
       name: "John",
       mail: "john@example.com",
       isAdmin: false,
-      enable: true,
+      isDeleted: false,
     },
     {
       id: 2,
       name: "Bob",
       mail: "bob@example.com",
       isAdmin: true,
-      enable: true,
+      isDeleted: false,
     },
     {
       id: 3,
       name: "Kate",
       mail: "kate@example.com",
       isAdmin: false,
-      enable: false,
+      isDeleted: true,
     },
   ];
 }

@@ -6,7 +6,7 @@ const testUser: User = {
   id: 1,
   name: "Test Name",
   mail: "test@example.com",
-  enable: true,
+  isDeleted: true,
   isAdmin: false,
 };
 
@@ -14,7 +14,7 @@ const disableUser: User = {
   id: 2,
   name: "Test Disable Name",
   mail: "test_disable@example.com",
-  enable: false,
+  isDeleted: false,
   isAdmin: false,
 };
 
