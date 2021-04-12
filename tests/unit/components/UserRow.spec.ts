@@ -1,4 +1,4 @@
-import { mount } from "@vue/test-utils";
+import { shallowMount } from "@vue/test-utils";
 import UserRow from "@/components/UserRow.vue";
 import { User } from "@/@types";
 
@@ -10,7 +10,7 @@ const testUser: User = {
   isAdmin: false,
 };
 
-const disableUser: User = {
+const deletedUser: User = {
   id: 2,
   name: "Test Disable Name",
   mail: "test_disable@example.com",
@@ -19,7 +19,7 @@ const disableUser: User = {
 };
 
 describe("UserRowに有効なユーザーが渡されたとき", () => {
-  const wrapper = mount(UserRow, {
+  const wrapper = shallowMount(UserRow, {
     props: {
       user: testUser,
       onDeleteBtnClick: jest.fn(),
@@ -35,21 +35,12 @@ describe("UserRowに有効なユーザーが渡されたとき", () => {
   it("disabledスタイルが適用されていないこと", () => {
     expect(wrapper.classes()).not.toContain("disabled");
   });
-  it("ボタンが非活性でないこと", () => {
-    const deleteBtn = wrapper.find("button");
-    expect(deleteBtn.attributes()).not.toHaveProperty("disabled");
-  });
-  it("ボタンクリック時にonDeleteBtnClickがコールされること", () => {
-    const deleteBtn = wrapper.find("button");
-    deleteBtn.trigger("click");
-    expect(wrapper.vm.onDeleteBtnClick).toHaveBeenCalled();
-  });
 });
 
 describe("UserRowに無効なユーザーが渡されたとき", () => {
-  const wrapper = mount(UserRow, {
+  const wrapper = shallowMount(UserRow, {
     props: {
-      user: disableUser,
+      user: deletedUser,
       onDeleteBtnClick: jest.fn(),
     },
   });

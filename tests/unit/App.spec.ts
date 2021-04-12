@@ -1,6 +1,7 @@
-import { mount } from "@vue/test-utils";
+import { mount, flushPromises } from "@vue/test-utils";
 import App from "@/App.vue";
 import UserRow from "@/components/UserRow.vue";
+import DeleteButton from "@/components/DeleteButton.vue";
 import { User } from "@/@types";
 import * as showUsers from "@/usecase/show-users";
 
@@ -10,7 +11,7 @@ const testData: User[] = [
     name: "test",
     mail: "test@example.com",
     isAdmin: false,
-    isDeleted: true,
+    isDeleted: false,
   },
   {
     id: 2,
@@ -48,5 +49,28 @@ describe("App.vue、マウント時の挙動の確認", () => {
     const wrapper = mount(App);
     await wrapper.vm.$nextTick();
     expect(spy).toHaveBeenCalled();
+  });
+});
+
+describe("コンポーネント間のテスト", () => {
+  const wrapper = mount(App, {
+    data() {
+      return {
+        users: [
+          {
+            id: 1,
+            name: "test",
+            mail: "test@example.com",
+            isAdmin: false,
+            isDeleted: false,
+          },
+        ],
+      };
+    },
+  });
+  it("DeleteButtonクリック時のテスト", () => {
+    const buttons = wrapper.findAllComponents(DeleteButton);
+    buttons[0].trigger("click");
+    expect(wrapper.vm.users[0].isDeleted).toBe(true);
   });
 });
