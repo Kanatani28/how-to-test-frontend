@@ -56,15 +56,7 @@ describe("コンポーネント間のテスト", () => {
   const wrapper = mount(App, {
     data() {
       return {
-        users: [
-          {
-            id: 1,
-            name: "test",
-            mail: "test@example.com",
-            isAdmin: false,
-            isDeleted: false,
-          },
-        ],
+        users: testData,
       };
     },
   });
